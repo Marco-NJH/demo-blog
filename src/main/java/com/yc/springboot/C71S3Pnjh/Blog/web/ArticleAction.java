@@ -5,7 +5,7 @@ import java.io.IOException;
 
 import javax.annotation.Resource;
 
-
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,6 +26,8 @@ import com.yc.springboot.C71S3Pnjh.Blog.vo.Result;
 @RestController
 public class ArticleAction {
 
+	@Value("${spring.resources.staticLocations}")
+	private String uploadDir;
 	@Resource
 	private ArticleBiz abiz;
 
@@ -48,7 +50,8 @@ public class ArticleAction {
 	
 	@PostMapping("uploadImg")
 	public String uploadImg(@RequestParam("file")MultipartFile file) throws IllegalStateException, IOException{
-		File diskfile=new File("d:/"+file.getOriginalFilename());
+		String path=uploadDir.substring("file:/".length());
+		File diskfile=new File(path+"/"+file.getOriginalFilename());
 		file.transferTo(diskfile);
 		return "success";
 	}
