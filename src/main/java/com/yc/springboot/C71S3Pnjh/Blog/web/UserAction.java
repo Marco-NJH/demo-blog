@@ -3,6 +3,10 @@ package com.yc.springboot.C71S3Pnjh.Blog.web;
 import javax.annotation.Resource;
 import javax.validation.Valid;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -42,5 +46,23 @@ public class UserAction {
 			return new Result(0, "业务繁忙");
 			
 		}
+	}
+	
+	@Autowired
+	private JavaMailSender mailSender;
+	@Value("${mail.fromMail.addr}")
+	private String from;
+	
+	@PostMapping("sendEmail")
+	public String sendSimpleMail(String to,String subject,String content){
+		SimpleMailMessage message=new SimpleMailMessage();
+		message.setFrom(from);
+		message.setTo(to);
+		message.setSubject(subject);
+		message.setText(content);
+		mailSender.send(message);
+		return "success";
+		
+		
 	}
 }

@@ -48,11 +48,16 @@ public class ArticleAction {
 
 	}
 	
-	@PostMapping("uploadImg")
-	public String uploadImg(@RequestParam("file")MultipartFile file) throws IllegalStateException, IOException{
+	@PostMapping("uploadimg")
+	public String uploadImg(String CKEditorFuncNum,@RequestParam("upload")MultipartFile file) throws IllegalStateException, IOException{
 		String path=uploadDir.substring("file:/".length());
-		File diskfile=new File(path+"/"+file.getOriginalFilename());
+		String fileName=file.getOriginalFilename();
+		File diskfile=new File(path+"/"+fileName);
 		file.transferTo(diskfile);
-		return "success";
+		String ret="<script type=\"text/javascript\">";
+		ret+="window.parent.CKEDITOR.tools.callFunction("+ CKEditorFuncNum + ",'" + "/" +
+               fileName + "','')";
+        ret+="</script>";
+		return ret;
 	}
 }
