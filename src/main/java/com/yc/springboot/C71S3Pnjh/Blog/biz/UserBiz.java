@@ -27,5 +27,24 @@ public class UserBiz {
 			return list.get(0);
 		}
 	}
+	
+	public User send(User user) throws BizException {
+		UserExample example=new UserExample();
+		example.createCriteria().andAccountEqualTo(user.getAccount())
+		.andEmailEqualTo(user.getEmail());
+		List<User> list2=um.selectByExample(example);
+		if(list2.size()==0){
+			throw new BizException("用户名或密码错误");
+		}else{
+			return list2.get(0);
+		}
+	}
+	
+	/*public String find(User user) throws BizException{
+		UserExample example=new UserExample();
+		example.createCriteria().andAccountEqualTo(user.getAccount());
+	
+		
+	}*/
 
 }

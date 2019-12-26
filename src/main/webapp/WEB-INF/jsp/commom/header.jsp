@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <header class="header">
   <nav class="navbar navbar-default" id="navbar">
     <div class="container">
@@ -27,7 +28,7 @@
         <a class="login" rel="nofollow" href="toaddArticle">
         	发表博文</a>&nbsp;&nbsp;
         </c:if>
-       <a href="javascript:;" class="register" rel="nofollow">我要注册</a>&nbsp;&nbsp;<a href="" rel="nofollow">找回密码</a> </div>
+       <a href="javascript:;" class="register" rel="nofollow">我要注册</a>&nbsp;&nbsp;<a href="find.html" rel="nofollow">找回密码</a> </div>
       <div class="navbar-header">
         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#header-navbar" aria-expanded="false"> <span class="sr-only"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
         <h1 class="logo hvr-bounce-in"><a href="" title=""><img src="images/logo.png" alt=""></a></h1>
