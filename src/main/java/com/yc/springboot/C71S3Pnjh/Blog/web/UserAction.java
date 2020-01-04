@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.jayway.jsonpath.Criteria;
+
 import com.yc.springboot.C71S3Pnjh.Blog.bean.User;
 import com.yc.springboot.C71S3Pnjh.Blog.bean.UserExample;
 import com.yc.springboot.C71S3Pnjh.Blog.biz.BizException;
